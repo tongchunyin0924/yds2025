@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { Layout, Row, Col, Typography, Input, Tooltip, Button, Flex, Result } from 'antd';
-import { InfoCircleOutlined, UserOutlined, SendOutlined, SmileOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined, UserOutlined, SendOutlined, LikeOutlined } from '@ant-design/icons';
 import Link from "next/link";
 
 import { Header } from "antd/es/layout/layout";
@@ -10,6 +10,7 @@ import { Footer } from "antd/es/layout/layout";
 import { Content } from "antd/es/layout/layout";
 
 import { LuckyWheel } from '@lucky-canvas/react'
+import { Fireworks } from '@fireworks-js/react'
 
 import YDSHeader from '../components/section/YDSHeader';
 
@@ -50,6 +51,7 @@ const DrawPage = () => {
   const myLucky = useRef()
   const drawButton = useRef()
   const nameInput = useRef()
+  const fireworkRef = useRef()
 
   const cleanInput = (input) => {
     return input.replace(/[^\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]+/gu, '');
@@ -69,17 +71,17 @@ const DrawPage = () => {
     else {
       return string.split('').reduce((hash, char) => {
         return char.charCodeAt(0) + (hash << 6) + (hash << 16) - hash;
-    }, 0);
+      }, 0);
     }
 
   }
 
   const startDrawing = (name, isFirstTime) => {
-    
-    const cleanedValue = cleanInput(name)
-    const result = stringToHash(cleanedValue, isFirstTime) 
 
-    const stopIndex = isFirstTime ? result % prizes.length : result % prizes.length -1
+    const cleanedValue = cleanInput(name)
+    const result = stringToHash(cleanedValue, isFirstTime)
+
+    const stopIndex = isFirstTime ? result % prizes.length : result % prizes.length - 1
 
     myLucky.current.play()
     setTimeout(() => {
@@ -95,11 +97,11 @@ const DrawPage = () => {
 
   return (
     <Layout>
-      <YDSHeader/>
+      <YDSHeader />
       <Content style={{ padding: '50px' }}>
+
         <Row>
           <Col flex={1}>
-
             <Flex gap="large" vertical>
               <div>
                 <Typography.Title level={5}>名前(漢字/ひらがな/カタカナ)</Typography.Title>
@@ -170,6 +172,7 @@ const DrawPage = () => {
                     startDrawing(name, false)
                   } else {
                     setResult(prize.fonts[0].text)
+                    fireworkRef.current.start()
                     // alert('恭喜你抽到 ' + prize.fonts[0].text + ' 号奖品')
                   }
                 }}
@@ -182,12 +185,12 @@ const DrawPage = () => {
           <Col>
             {result.length > 0 &&
               <Result
-                icon={<SmileOutlined />}
-                title = {`${name}さん ! お勧めの短期宣教の目的地は ${result} です`}
+                icon={<LikeOutlined />}
+                title={`${name}さん ! お勧めの短期宣教の目的地は ${result} です`}
                 subTitle=""
                 extra={[
-                  <Link href="/">                 
-                    <Button type  ="primary" key="console">
+                  <Link href="/">
+                    <Button type="primary" key="console">
                       戻る
                     </Button>
                   </Link>
@@ -198,6 +201,24 @@ const DrawPage = () => {
           </Col>
         </Row>
 
+        <Fireworks
+          ref={fireworkRef}
+          autostart={false}
+          options={{
+            opacity: 0.5,
+            // intensity: 10
+          }}
+          style={{
+            top: 0,
+            left: 0,
+            // zIndex: -1,
+            pointerEvents: 'none',
+            width: '100%',
+            height: '100%',
+            position: 'fixed',
+            background: 'rgba(52, 52, 52, 0)'
+          }}
+        />
       </Content>
 
 

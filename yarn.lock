@@ -94,6 +94,13 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@fireworks-js/react@2.10.8":
+  version "2.10.8"
+  resolved "https://registry.yarnpkg.com/@fireworks-js/react/-/react-2.10.8.tgz#3667d6715a1fd8c30bf526b0f42ed0d3f9006e68"
+  integrity sha512-Qy/HSiTnph2IT2LHVzo9Ov+zifGQboTICjVLyrp/sWMHZoaodZiW0xrFxN1RfYI3R7j5bNZmf6S9EzqOWPfFWA==
+  dependencies:
+    fireworks-js "2.10.8"
+
 "@img/sharp-darwin-arm64@0.33.5":
   version "0.33.5"
   resolved "https://registry.yarnpkg.com/@img/sharp-darwin-arm64/-/sharp-darwin-arm64-0.33.5.tgz#ef5b5a07862805f1e8145a377c8ba6e98813ca08"
@@ -585,6 +592,11 @@ enhanced-resolve@^5.18.1:
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
+
+fireworks-js@2.10.8:
+  version "2.10.8"
+  resolved "https://registry.yarnpkg.com/fireworks-js/-/fireworks-js-2.10.8.tgz#b161c9f905ac96f9cbb1635603eda9dbe1d99d22"
+  integrity sha512-UZNxeJvRmQzLisN4iriWXqKojG9TDJqc0dPmkUw0/+AEQQ3w8z1Jx2YdFSiBGSVb/u4dPTQXU109GMVblzhfpg==
 
 graceful-fs@^4.2.4:
   version "4.2.11"
