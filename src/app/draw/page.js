@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Layout, Row, Col, Typography, Input, Tooltip, Button, Flex, Result } from 'antd';
+import { Layout, Row, Col, Typography, Input, Tooltip, Button, Flex, Result, Slider } from 'antd';
 import { InfoCircleOutlined, UserOutlined, SendOutlined, LikeOutlined } from '@ant-design/icons';
 import Link from "next/link";
 
@@ -18,6 +18,7 @@ const DrawPage = () => {
 
   const [size, setSize] = useState('large');
   const [name, setName] = useState('');
+  const [confidance, setConfidance] = useState(-1);
   const [isDrawing, setIsDrawing] = useState(false);
   const [result, setResult] = useState('');
 
@@ -53,6 +54,8 @@ const DrawPage = () => {
   const nameInput = useRef()
   const fireworkRef = useRef()
 
+  const formatter = (value) => `${value}%`;
+
   const cleanInput = (input) => {
     return input.replace(/[^\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Han}]+/gu, '');
   };
@@ -84,9 +87,11 @@ const DrawPage = () => {
     const stopIndex = isFirstTime ? result % prizes.length : result % prizes.length - 1
 
     myLucky.current.play()
+    //500 - 1500
+    const randomTime = Math.floor(Math.random() * 1000) + 500;
     setTimeout(() => {
       myLucky.current.stop(stopIndex)
-    }, 500)
+    }, randomTime)
   }
 
   useEffect(() => {
@@ -134,10 +139,29 @@ const DrawPage = () => {
                     }
                   }}
                 />
+
+
               </div>
+
+              <Flex vertical>
+                <Typography.Title level={5}>どれほど神様の導きを信じていますか？</Typography.Title>
+                <Slider
+                  tooltip={{
+                    formatter,
+                  }}
+                  onChange={(value) => {
+                    setConfidance(value)
+                  }}
+                />
+                {confidance >= 0 && confidance <= 20 && <Typography.Text keyboard>あまり信じていない</Typography.Text>}
+                {confidance > 20 && confidance <= 50 && <Typography.Text keyboard>時々信じている</Typography.Text>}
+                {confidance > 50 && confidance <= 80 && <Typography.Text keyboard>たいてい信じている</Typography.Text>}
+                {confidance > 80 && confidance <= 100 && <Typography.Text keyboard>完全に信じている</Typography.Text>}
+              </Flex>
+
               <Flex gap="large">
                 <Button
-                  disabled={name.length < 1 || isDrawing}
+                  disabled={name.length < 1 || isDrawing || confidance < 0}
                   type="primary"
                   icon={<SendOutlined />}
                   size={size}

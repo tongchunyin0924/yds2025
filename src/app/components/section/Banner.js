@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { Flex, Button, Typography } from 'antd';
+import { Flex, Button, Typography, Row, Col } from 'antd';
 import { SendOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
 
 const baseStyle = {
-  width: '50%',
-  height: '500px'
+  // width: '50%',
+  // height: '500px'
 };
 
 import bannerimg from "../../resources/banner-img.png";
@@ -21,11 +21,50 @@ const Banner = () => {
   return (
 
     <div>
-      <Flex vertical={false} >
+      {/* <Flex vertical={false} > */}
 
-        <div style={{ ...baseStyle }}>
+      <div style={{ ...baseStyle }}>
 
-          <Flex vertical={true} style={{ height: '100%', padding: '50px' }} align="center" justify="center">
+        <Row>
+          <Col xs={{
+            flex: '100%',
+          }}
+            sm={{
+              flex: '50%',
+            }} >
+            <Flex vertical={true} style={{ height: '100%', paddingTop: '50px' }} align="center" justify="center">
+              <Title>
+                「短期宣教参加するかどうか？」
+              </Title>
+
+              <Title level={3}>
+                困ってる人がこっちに来て
+              </Title>
+
+              <div style={{ height: '20%' }}>
+              </div>
+
+              <div>
+                <Link href="draw">
+                  <Button type="primary" icon={<SendOutlined />} size={size}>
+                    スタート
+                  </Button>
+                </Link>
+              </div>
+            </Flex>
+          </Col>
+          <Col xs={{
+            flex: '100%',
+          }}
+            sm={{
+              flex: '50%',
+            }}>
+
+            <Image src={bannerimg} alt="hero banner" />
+          </Col>
+        </Row>
+
+        {/* <Flex vertical={true} style={{ height: '100%', padding: '50px' }} align="center" justify="center">
             <Title>
               「短期宣教参加するかどうか？」
             </Title>
@@ -44,14 +83,14 @@ const Banner = () => {
                 </Button>
               </Link>
             </div>
-          </Flex>
+          </Flex> */}
 
-        </div>
+      </div>
 
-        <div style={{ ...baseStyle }}>
+      {/* <div style={{ ...baseStyle }}>
           <Image src={bannerimg} alt="hero banner" />
-        </div>
-      </Flex>
+        </div> */}
+      {/* </Flex> */}
 
     </div>
     // <div className="static-slider-head banner2">
