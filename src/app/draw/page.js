@@ -87,8 +87,9 @@ const DrawPage = () => {
     const stopIndex = isFirstTime ? result % prizes.length : result % prizes.length - 1
 
     myLucky.current.play()
-    //500 - 1500
-    const randomTime = Math.floor(Math.random() * 1000) + 500;
+    //500 - 5500
+    const randomTime = Math.floor(Math.random() * 5000) + 500;
+    console.log(randomTime)
     setTimeout(() => {
       myLucky.current.stop(stopIndex)
     }, randomTime)
