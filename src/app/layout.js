@@ -16,7 +16,7 @@ export const metadata = {
   description: "",
   appleWebApp: {
     title: 'YDS2025 App',
-    statusBarStyle: 'black-translucent'
+    statusBarStyle: 'black-translucent',
   },
 };
 
@@ -24,6 +24,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        {/* WORKAROUND */}
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
