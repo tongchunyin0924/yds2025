@@ -26,10 +26,10 @@ const DrawPage = () => {
     { padding: '10px', background: '#869cfa' }
   ])
   const [prizes] = useState([
-    { background: '#e9e8fe', fonts: [{ index: 0, text: '南タイ', top: '10%' }] },
-    { background: '#b8c5f2', fonts: [{ index: 1, text: '中東', top: '10%' }] },
-    { background: '#e9e8fe', fonts: [{ index: 2, text: '日本国内', top: '10%' }] },
-    { background: '#b8c5f2', fonts: [{ index: 3, text: '不参加', top: '10%' }] },
+    { background: '#e9e8fe', fonts: [{ index: 0, text: '南タイ', top: '20%', fontSize: '24px', fontColor: '#6E7F80'}] },
+    { background: '#b8c5f2', fonts: [{ index: 1, text: '中東', top: '20%', fontSize: '24px', fontColor: '#6E7F80' }] },
+    { background: '#e9e8fe', fonts: [{ index: 2, text: '日本国内', top: '20%', fontSize: '24px', fontColor: '#6E7F80' }] },
+    { background: '#b8c5f2', fonts: [{ index: 3, text: '不参加', top: '20%', fontSize: '24px', fontColor: '#6E7F80' }] },
   ])
   const [buttons] = useState([
     // { radius: '40%', background: '#617df2' },
@@ -109,7 +109,7 @@ const DrawPage = () => {
           <Col flex={1}>
             <Flex gap="large" vertical>
               <div>
-                <Typography.Title level={5}>名前(漢字/ひらがな/カタカナ)</Typography.Title>
+                <Typography.Title level={4}>名前(漢字/ひらがな/カタカナ)</Typography.Title>
                 <Input
                   ref={nameInput}
                   style={{ width: '80%' }}
@@ -144,7 +144,7 @@ const DrawPage = () => {
               </div>
 
               <Flex vertical>
-                <Typography.Title level={5}>どれほど神様の導きを信じていますか？</Typography.Title>
+                <Typography.Title level={4}>どれほど神様の導きを信じていますか？</Typography.Title>
                 <Slider
                   tooltip={{
                     formatter,
