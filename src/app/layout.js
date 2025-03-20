@@ -14,7 +14,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "YDS2025",
   description: "",
-  appleWebApp: true
+  appleWebApp: {
+    title: 'YDS2025 App',
+    statusBarStyle: 'black-translucent'
+  },
 };
 
 
